@@ -13,7 +13,6 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
-
   switch(playerSelection) {
     case "rock":
       if (computerSelection === "rock") {
@@ -49,16 +48,26 @@ function playRound(playerSelection, computerSelection) {
 
 
 function game() {
+  let win = 0;
+  let lose = 0
+  let tie = 0;
 
   for (let i = 0; i < 5; i++) {
     const playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
     console.log(`You chose ${playerSelection}.`);
     const computerSelection = getComputerChoice();
     console.log(`Your opponent chose ${computerSelection}.`);
-    console.log(playRound(playerSelection, computerSelection));
+    let roundResult = playRound(playerSelection, computerSelection); // put the round in a variable so the if statements below work
+    if (roundResult === "You won!") {
+      win++;
+    } else if (roundResult === "You lost!") {
+      lose ++;
+    } else if (roundResult === "You tied!") {
+      tie++;
+    }
+    console.log(roundResult);
   }
-// console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
-// the above is pending me working out the score
+console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
 }
 
 game();
