@@ -57,8 +57,8 @@ function game() {
     console.log(`Your opponent chose ${computerSelection}.`);
     console.log(playRound(playerSelection, computerSelection));
   }
-
-  console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
+// console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
+// the above is pending me working out the score
 }
 
 game();
