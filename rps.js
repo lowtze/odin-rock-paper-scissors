@@ -1,3 +1,22 @@
+let win = 0;
+let lose = 0;
+let tie = 0;
+let roundCount = 0;
+
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", function () { buttonRound("rock") });
+
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", function () { buttonRound("paper") });
+
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", function () { buttonRound("scissors") });
+
+const results = document.querySelector("#results");
+
+const score = document.querySelector("#score");
+
+
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3) + 1;
 
@@ -13,7 +32,7 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
-  switch(playerSelection) {
+  switch (playerSelection) {
     case "rock":
       if (computerSelection === "rock") {
         return "You tied!";
@@ -61,13 +80,33 @@ function game() {
     if (roundResult === "You won!") {
       win++;
     } else if (roundResult === "You lost!") {
-      lose ++;
+      lose++;
     } else if (roundResult === "You tied!") {
       tie++;
     }
     console.log(roundResult);
   }
-console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
+  console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
 }
 
-game();
+function buttonRound(playerSelection) {
+  if (roundCount < 5) {
+    roundCount++;
+    console.log(roundCount);
+    const computerSelection = getComputerChoice();
+    let roundResult = playRound(playerSelection, computerSelection);
+    results.textContent = `You chose ${playerSelection}. Your opponent chose ${computerSelection}. ${roundResult}`;
+    if (roundResult === "You won!") {
+      win++;
+    } else if (roundResult === "You lost!") {
+      lose++;
+    } else if (roundResult === "You tied!") {
+      tie++;
+    }
+    score.textContent = `You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`;
+  } else {
+    score.textContent = "Thanks for playing!";
+  }
+}
+
+//game();

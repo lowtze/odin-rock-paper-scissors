@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
-  <script src="rps.js"></script>
 </head>
+
 <body>
   <h1>Rock Paper Scissors - Console Edition</h1>
-  <p>This game currently runs in your console. Please open the console in your preferred browser and away you go!</p>
+  <p>This game now runs directly below. Please choose your weapon and away you go!</p>
+  <div id="score"></div>
+  <div id="results"></div>
+  <div id="buttons">
+    <button id="rock" type="button">Rock</button>
+    <button id="paper" type="button">Paper</button>
+    <button id="scissors" type="button">Scissors</button>
+  </div>
+  <script src="rps.js"></script>
+  <!-- script comes after body so it runs after elements load otherwise it runs before they load and the selectors won't work -->
 </body>
+
 </html>
