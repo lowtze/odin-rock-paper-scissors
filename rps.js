@@ -16,6 +16,10 @@ const results = document.querySelector("#results");
 
 const score = document.querySelector("#score");
 
+const resetBtn = document.querySelector("#restart");
+resetBtn.style.display = "none";
+resetBtn.addEventListener("click", function () { resetGame()});
+
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3) + 1;
@@ -66,36 +70,17 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-function game() {
-  let win = 0;
-  let lose = 0
-  let tie = 0;
-
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
-    console.log(`You chose ${playerSelection}.`);
-    const computerSelection = getComputerChoice();
-    console.log(`Your opponent chose ${computerSelection}.`);
-    let roundResult = playRound(playerSelection, computerSelection); // put the round in a variable so the if statements below work
-    if (roundResult === "You won!") {
-      win++;
-    } else if (roundResult === "You lost!") {
-      lose++;
-    } else if (roundResult === "You tied!") {
-      tie++;
-    }
-    console.log(roundResult);
-  }
-  console.log(`You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`);
-}
-
 function buttonRound(playerSelection) {
   if (roundCount < 5) {
     roundCount++;
-    console.log(roundCount);
+    //console.log(roundCount);
+    
     const computerSelection = getComputerChoice();
+
     let roundResult = playRound(playerSelection, computerSelection);
+    
     results.textContent = `You chose ${playerSelection}. Your opponent chose ${computerSelection}. ${roundResult}`;
+
     if (roundResult === "You won!") {
       win++;
     } else if (roundResult === "You lost!") {
@@ -103,10 +88,27 @@ function buttonRound(playerSelection) {
     } else if (roundResult === "You tied!") {
       tie++;
     }
-    score.textContent = `You won ${win} times, lost ${lose} times and tied ${tie} times. Thanks for playing!`;
-  } else {
-    score.textContent = "Thanks for playing!";
+
+    score.textContent = `You won ${win} times, lost ${lose} times and tied ${tie} times.`;
+  }
+
+  if (roundCount === 5) {
+    results.textContent = "You lost! Better luck next time.";
+    resetBtn.style.display = "block";
+
+    if (win > lose && win > tie) {
+      results.textContent = "You won!";
+    }
   }
 }
 
-//game();
+
+function resetGame() {
+  win = 0;
+  lose = 0;
+  tie = 0;
+  roundCount = 0;
+  resetBtn.style.display = "none";
+  score.textContent = "";
+  results.textContent = "";
+}

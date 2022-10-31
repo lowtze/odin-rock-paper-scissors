@@ -6,17 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="rps.css">
 </head>
 
 <body>
-  <h1>Rock Paper Scissors - Console Edition</h1>
-  <p>This game now runs directly below. Please choose your weapon and away you go!</p>
+  <h1>Rock Paper Scissors - DOM Edition</h1>
+  <p>This game now runs directly below. Best out of five rounds. Please choose your weapon and away you go!</p>
   <div id="score"></div>
   <div id="results"></div>
+  <button id="restart">Play Again?</button>
   <div id="buttons">
-    <button id="rock" type="button">Rock</button>
-    <button id="paper" type="button">Paper</button>
-    <button id="scissors" type="button">Scissors</button>
+    <button id="rock" type="button">🪨</button>
+    <button id="paper" type="button">📜</button>
+    <button id="scissors" type="button">✂️</button>
   </div>
   <script src="rps.js"></script>
   <!-- script comes after body so it runs after elements load otherwise it runs before they load and the selectors won't work -->
