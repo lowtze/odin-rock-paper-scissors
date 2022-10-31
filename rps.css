@@ -1,0 +1,58 @@
+html {
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+body {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+}
+
+p {
+  text-align: center;
+}
+
+#score, #results {
+  height: 60px;
+}
+
+#buttons {
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#buttons button {
+  font-size: 72px;
+  background: none;
+  border: none;
+  transition: 0.1s;
+  width: 200px;
+  padding: 40px;
+}
+
+#buttons button:hover {
+  transform: scale(1.5);
+}
+
+#buttons button:active {
+  transform: translateY(4px);
+}
+
+#restart {
+  background-color: #1ce11c;
+  color: white;
+  font-size: 16px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  transition: 0.4s;
+}
+
+#restart:hover {
+  box-shadow: 0 5px 15px rgba(42, 106, 56, 0.4);
+  transform: scale(1.1);
+}
